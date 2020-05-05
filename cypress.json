@@ -1,3 +1,4 @@
 {
-    "baseUrl": "http://localhost/addressbook/"
+  "baseUrl": "http://localhost/addressbook/",
+  "projectId": "fqqa7k"
 }
