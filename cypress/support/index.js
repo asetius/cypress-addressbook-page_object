@@ -18,3 +18,15 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+    
+
+
+beforeEach(() => {
+    cy.fixture('users').then((data) => {
+        cy.visit('/');
+        cy.get('[name="user"]').type(data.user);
+        cy.get('[name="pass"]').type(data.password);
+        cy.get('[type="submit"]').click();
+    });
+});
+

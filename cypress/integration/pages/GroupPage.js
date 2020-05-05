@@ -2,6 +2,7 @@
 
 class GroupPage {
 
+
     newGroupButtonClick() {
         cy.get('#content > form > input[type=submit]:nth-child(1)').click();
     }
@@ -15,15 +16,19 @@ class GroupPage {
     }
 
     fillGroupForm() {
-        cy.get('[name="group_name"]').type('name_1');
-        cy.get('[name="group_header"]').type('header_1');
-        cy.get('[name="group_footer"]').type('footer_1');
+        cy.fixture('groupform').then((form)  => {
+            cy.get('[name="group_name"]').type(form.create.group_name);
+            cy.get('[name="group_header"]').type(form.create.group_header);
+            cy.get('[name="group_footer"]').type(form.create.group_footer);
+        });
     }
 
     editGroupForm() {
-        cy.get('[name="group_name"]').clear().type('name_2');
-        cy.get('[name="group_header"]').clear().type('header_2');
-        cy.get('[name="group_footer"]').clear().type('footer_2');
+        cy.fixture('groupform').then((form)  => {
+            cy.get('[name="group_name"]').clear().type(form.edit.group_name);
+            cy.get('[name="group_header"]').clear().type(form.edit.group_header);
+            cy.get('[name="group_footer"]').clear().type(form.edit.group_footer);
+        });
     }
 
     submitCreateGroup() {
@@ -35,11 +40,11 @@ class GroupPage {
     }
 
     goToGroupPage() {
-        cy.get('a').contains('groups').click();
+        cy.contains('groups').click();
     }
 
     returnToGroupPage() {
-        cy.get('a').contains('group page').click();
+        cy.contains('group page').click();
     }
 
     selectGroup() {

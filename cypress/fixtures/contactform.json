@@ -1,0 +1,13 @@
+{
+    "create": {
+        "firstname": "Asset",
+        "lastname": "Kussainov",
+        "address": "Kostanay"
+    },
+
+    "edit": {
+        "firstname": "Raushan",
+        "lastname": "Kussainova",
+        "address": "Kokshetau"
+    }
+}

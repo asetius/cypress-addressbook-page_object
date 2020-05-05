@@ -3,7 +3,7 @@
 class ContactPage {
 
     goToAddNewContact() {
-        cy.get('a').contains('add new').click();
+        cy.contains('add new').click();
     }
 
     delContactButtonClick() {
@@ -27,15 +27,19 @@ class ContactPage {
     }
 
     fillContactForm() {
-        cy.get('[name="firstname"]').type('firstname_1');
-        cy.get('[name="lastname"]').type('lastname_1');
-        cy.get('[name="address"]').type('Astana');
+        cy.fixture('contactform').then((form)  => {
+            cy.get('[name="firstname"]').type(form.create.firstname);
+            cy.get('[name="lastname"]').type(form.create.lastname);
+            cy.get('[name="address"]').type(form.create.address);
+        });
     }
 
     editContactForm() {
-        cy.get('[name="firstname"]').clear().type('firstname_2');
-        cy.get('[name="lastname"]').clear().type('lastname_2');
-        cy.get('[name="address"]').clear().type('Nur-Sultan');
+        cy.fixture('contactform').then((form)  => {
+            cy.get('[name="firstname"]').clear().type(form.edit.firstname);
+            cy.get('[name="lastname"]').clear().type(form.edit.lastname);
+            cy.get('[name="address"]').clear().type(form.edit.address);
+        });
     }
 
     confirmDelContact() {
@@ -44,7 +48,7 @@ class ContactPage {
     }
 
     returnToHomePage() {
-        cy.get('a').contains('home page').click();
+        cy.contains('home page').click();
     }
 
 }
